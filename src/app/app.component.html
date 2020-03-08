@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div *ngIf="!displayBoard" class="row my-3">
+    <div class="col-12">
+      <form>
+        <div class="form-group row">
+          <label class="col-xl-3 col-lg-5 col-md-6 col-form-label">Please enter board width:</label>
+          <div class="col-xl-3 col-lg-5 col-md-6">
+            <input type="number" name="width" [(ngModel)]="boardWidth" class="form-control" placeholder="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-xl-3 col-lg-5 col-md-6 col-form-label">Please enter board height:</label>
+          <div class="col-xl-3 col-lg-5 col-md-6">
+            <input type="number" name="height" [(ngModel)]="boardHeight" class="form-control" placeholder="">
+          </div>
+        </div>
+        <button class="btn btn-success generate-btn" (click)="generateBoard()">Generate Board</button>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="displayBoard" class="my-3">
+    <mat-grid-list [cols]="boardWidth" rowHeight="50" [gutterSize]="0">
+      <mat-grid-tile *ngFor="let square of boardArray; let i=index;">
+        <img *ngIf="square === 'mario'" src="assets/images/mario.png" class="img-fluid img-icon" alt="Mario">
+        <img *ngIf="square === 'sprite'" src="assets/images/yoshi.png" class="img-fluid img-icon" alt="Yoshi">
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>
